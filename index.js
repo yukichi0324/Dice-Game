@@ -18,7 +18,7 @@ function rollRightDice() {
 let entries = performance.getEntriesByType("navigation");
 console.log("entries[0].type: ", entries[0].type);
 
-if (entries[0].type === "reload") {
+function roll() {
   rollLeftDice();
   rollRightDice();
 
@@ -30,3 +30,14 @@ if (entries[0].type === "reload") {
     document.querySelector("h1").innerHTML = "Draw!";
   }
 }
+
+if (entries[0].type === "reload") {
+  roll();
+}
+
+document.querySelector("button").addEventListener("click", () => {
+  console.log("called");
+  let music = new Audio("./audio/dice.mp3");
+  music.play();
+  roll();
+});
